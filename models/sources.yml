@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+     - name: RawData
+       schema: Source
+       tables:
+         - name: stg_orders
+         - name: date_dim
