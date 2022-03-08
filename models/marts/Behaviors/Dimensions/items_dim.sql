@@ -11,4 +11,8 @@ on a.num=b.num) x
 join
 (select description,row_number() over() as num from (select product_description from {{ref('stg_items')}}),unnest(product_description) as description)c
 on x.num=c.num
-) select distinct id,name,description from cte 
+) ,
+dupli as
+(
+    select *,row_number() over(partition by id order by id) num from cte 
+) select distinct id,name,description from dupli where num = 1

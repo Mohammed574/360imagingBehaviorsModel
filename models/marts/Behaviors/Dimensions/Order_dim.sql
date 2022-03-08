@@ -18,4 +18,4 @@ with select_attributes as
 
 
     from {{ref('stg_order')}}
-) select * from select_attributes where Courier_ID is not null
+) select * from select_attributes
